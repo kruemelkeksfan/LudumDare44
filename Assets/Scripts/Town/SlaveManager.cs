@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SlaveManager : MonoBehaviour
 {
     [SerializeField] Text SlaveCountDisplay;
+    [SerializeField] string preText = "free slave Count: ";
 
     int slaveCount = 0;
     [SerializeField] int initalSlaveCount;
@@ -13,7 +14,7 @@ public class SlaveManager : MonoBehaviour
     private void Start()
     {
         slaveCount = initalSlaveCount;
-        SlaveCountDisplay.text = "Slave Count: " + slaveCount;
+        SlaveCountDisplay.text = preText + slaveCount;
     }
 
     public int SlaveCount
@@ -26,11 +27,11 @@ public class SlaveManager : MonoBehaviour
     public void AddSlaves(int count)
     {
         slaveCount += count;
-        SlaveCountDisplay.text = "Slave Count: " + slaveCount;
+        SlaveCountDisplay.text = preText + slaveCount;
     }
     public void RemoveSlaves(int count)
     {
         slaveCount -= count;
-        SlaveCountDisplay.text = "Slave Count: " + slaveCount;
+        SlaveCountDisplay.text = preText + slaveCount;
     }
 }
