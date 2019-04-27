@@ -3,21 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildingManager : MonoBehaviour
+public class BuildingManager : WorkingManager
 {
-    [SerializeField] Text SlaveCountDisplay;
-    [SerializeField] string preText = "free slave Count: ";
     [SerializeField] Transform building;
     [SerializeField] int intervall;
     [SerializeField] int gesProgress;
     [SerializeField] int progressPerWorker;
     [SerializeField] int materialPerWorker;
-    [Header("Dying Worker")]
-    [SerializeField] int highDeathCount = 100;
-    [Range(1, 10)] [SerializeField] int minOneDieChance;
-    [Range(1, 10)] [SerializeField] int cutHighLossChance;
-    [Range(1,1000)][SerializeField] int workerDieRate;
-    int worker = 1000;
     float progress = 0;
     float step = 0;
     float nextStep = 0;
@@ -25,24 +17,6 @@ public class BuildingManager : MonoBehaviour
     Transform[] buildingChilds;
     List<Transform> buildingParts;
     GameManager gameManager;
-
-    public int Worker
-    {
-        get
-        {
-            return worker;
-        }
-    }
-    public void AddWorker(int count)
-    {
-        worker += count;
-        SlaveCountDisplay.text = preText + worker;
-    }
-    public void RemoveWorker(int count)
-    {
-        worker -= count;
-        SlaveCountDisplay.text = preText + worker;
-    }
 
     void Start()
     {
@@ -63,7 +37,7 @@ public class BuildingManager : MonoBehaviour
         step = gesProgress / buildingParts.Count;
         nextStep = step;
         StartCoroutine(Build());
-        SlaveCountDisplay.text = preText + worker;
+        WorkerCountDisplay.text = preText + worker;
     }
 
     IEnumerator Build()
@@ -89,27 +63,5 @@ public class BuildingManager : MonoBehaviour
             yield return new WaitForSeconds(intervall);
         }
         gameManager.WinLevel();
-    }
-
-    private int KillWorker()
-    {
-        int dying = Mathf.RoundToInt(worker * workerDieRate * 0.1f);
-        if (dying < 1)
-        {
-            int roll = Random.Range(0, 10);
-            if (roll < minOneDieChance)
-            {
-                dying = 1;
-            }
-        }
-        else if (dying > 1)
-        {
-            int roll = Random.Range(0, 10);
-            if (roll < cutHighLossChance)
-            {
-                dying = Mathf.RoundToInt(dying * 0.5f);
-            }
-        }
-        return dying;
     }
 }
