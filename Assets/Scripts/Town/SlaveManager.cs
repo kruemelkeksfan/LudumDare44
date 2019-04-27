@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SlaveManager : MonoBehaviour
 {
     [SerializeField] SlaveShooter slaveShooter;
+    [SerializeField] AudioSource pickUpSoundHolder;
     [SerializeField] Text SlaveCountDisplay;
     [SerializeField] string preText = "free slave Count: ";
 
@@ -66,6 +67,7 @@ public class SlaveManager : MonoBehaviour
     public void AddSlaves(int count)
     {
         slaveShooter.isActive = false;
+        pickUpSoundHolder.Play();
         slaveCount += count;
         SlaveCountDisplay.text = preText + slaveCount;
     }

@@ -51,14 +51,14 @@ public class CentralisticCameraController : MonoBehaviour
 
 		// Translate and rotate camera
 		Vector3 rotation = transform.rotation.eulerAngles;
-		Debug.Log("o: " + direction.y);
+		//Debug.Log("o: " + direction.y);
 		if((rotation.x < 180.0f && rotation.x > MAXIMUM_ANGLE && direction.y > 0)
 			|| (rotation.x >= 180.0f && rotation.x < 360.0f - MAXIMUM_ANGLE && direction.y < 0))
 			{
 			Debug.Log(rotation.x + " " + direction.y);
 			direction.y = 0.0f;
 			}
-		Debug.Log("n: " + direction.y);
+		//Debug.Log("n: " + direction.y);
 
 		transform.position += Quaternion.Euler(rotation.x, rotation.y, 0) * direction;
 		transform.position += (transform.rotation * Vector3.forward) * (Input.GetAxis("Mouse ScrollWheel") * SCROLL_SPEED); // Zoom with ScrollWheel
