@@ -74,6 +74,10 @@ public class SlaveManager : MonoBehaviour
     public void RemoveSlaves(int count)
     {
         slaveCount -= count;
+        if (slaveCount < 0)
+        {
+            slaveCount = 0;
+        }
         SlaveCountDisplay.text = preText + slaveCount;
     }
 }

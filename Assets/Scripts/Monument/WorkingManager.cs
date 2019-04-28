@@ -37,6 +37,10 @@ public class WorkingManager : MonoBehaviour
     public void RemoveWorker(int count)
     {
         worker -= count;
+        if (noNegativeWorkers && worker < 0)
+        {
+            worker = 0;
+        }
         WorkerCountDisplay.text = preText + worker;
     }
 
