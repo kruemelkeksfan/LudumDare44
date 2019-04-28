@@ -98,7 +98,7 @@ public class BuildingManager : WorkingManager
             else
             {
                 progress += progressGain;
-                while (progress > nextStep)
+                if (progress > nextStep)
                 {
                     audioSource = gameObject.GetComponent<AudioSource>();
                     audioSource.clip = buildSfx[Random.Range(0, buildSfx.Length)];
@@ -108,10 +108,6 @@ public class BuildingManager : WorkingManager
                     lastStep = nextStep;
                     nextStep += step;
                     lastPart++;
-                    if (lastPart >= buildingParts.Count)
-                    {
-                        break;
-                    }
                 }
                 if (lastPart >= buildingParts.Count)
                 {

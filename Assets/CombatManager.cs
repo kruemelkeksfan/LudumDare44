@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
+    [SerializeField] GameObject attackWarning;
     [SerializeField] BuildingManager buildingManager;
     [SerializeField] GameObject spawnPointHolder;
     [SerializeField] Enemy enemyPrefab;
@@ -36,6 +37,7 @@ public class CombatManager : MonoBehaviour
         if (combat && enemies.Count < 1)
         {
             //endMusic
+            attackWarning.SetActive(false);
             combat = false;
         }
     }
@@ -46,6 +48,7 @@ public class CombatManager : MonoBehaviour
         if (roll < attackChance)
         {
             //startFightMusik
+            attackWarning.SetActive(true);
             StartCoroutine(WaitForAttack());
         }
     }
