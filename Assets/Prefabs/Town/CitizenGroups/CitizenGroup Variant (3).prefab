@@ -79,12 +79,12 @@ PrefabInstance:
     - target: {fileID: 7638207045931268546, guid: d9d134f68fa53d347bbd7e44d47c5e66,
         type: 3}
       propertyPath: minCount
-      value: 45
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7638207045931268546, guid: d9d134f68fa53d347bbd7e44d47c5e66,
         type: 3}
       propertyPath: maxCount
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7638207045931268546, guid: d9d134f68fa53d347bbd7e44d47c5e66,
         type: 3}

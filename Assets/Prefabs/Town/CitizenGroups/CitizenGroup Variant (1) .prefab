@@ -15,12 +15,12 @@ PrefabInstance:
     - target: {fileID: 587600238084649317, guid: 358fb549bf76a1d41af60b93bff9858d,
         type: 3}
       propertyPath: minCount
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 587600238084649317, guid: 358fb549bf76a1d41af60b93bff9858d,
         type: 3}
       propertyPath: maxCount
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 587600238084649317, guid: 358fb549bf76a1d41af60b93bff9858d,
         type: 3}
