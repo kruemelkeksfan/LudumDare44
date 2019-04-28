@@ -12,6 +12,7 @@ public class BuildingManager : WorkingManager
     [SerializeField] int progressPerWorker;
     [SerializeField] int materialPerWorker;
     [SerializeField] CollectorManager materailCollector;
+    [SerializeField] AudioClip buildSfx;
     float progress = 0;
     float step = 0;
     float nextStep = 0;
@@ -19,6 +20,7 @@ public class BuildingManager : WorkingManager
     Transform[] buildingChilds;
     List<Transform> buildingParts;
     GameManager gameManager;
+    AudioSource audioSource;
 
     void Start()
     {
@@ -64,6 +66,9 @@ public class BuildingManager : WorkingManager
             RemoveWorker(KillWorker());
             while (progress > nextStep)
             {
+                audioSource = gameObject.GetComponent<AudioSource>();
+                audioSource.clip = buildSfx;
+                audioSource.Play();
                 buildingParts[lastPart].gameObject.SetActive(true);
                 nextStep += step;
                 lastPart++;
