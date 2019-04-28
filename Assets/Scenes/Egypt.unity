@@ -3571,7 +3571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackWarning: {fileID: 421018570}
   buildingManager: {fileID: 1958909396}
-  spawnPointHolder: {fileID: 0}
+  spawnPointHolder: {fileID: 478317383}
   enemyPrefab: {fileID: 6759564133916856914, guid: 9bb0424408d6c3e479b4731e9e0adc4f,
     type: 3}
   attackChance: 50
@@ -3658,7 +3658,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: f1654275eca9cd4489e60ef7e84cf8e2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -15953,7 +15953,8 @@ AudioSource:
   m_GameObject: {fileID: 1304456439}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243749965011980536, guid: 9221e919f96b9aa4cab89e59e70c3988,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: fbe880fe678065f489dae69c74125895, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.7
@@ -20781,7 +20782,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4553
+      value: -0.317
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -23686,7 +23687,8 @@ AudioSource:
   m_GameObject: {fileID: 1827128850}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243191396108581308, guid: 9221e919f96b9aa4cab89e59e70c3988,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 9e48856775d6d404b8caf5b407eb7521, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -25595,7 +25597,8 @@ AudioSource:
   m_GameObject: {fileID: 1958909395}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243191396108581308, guid: 9221e919f96b9aa4cab89e59e70c3988,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
