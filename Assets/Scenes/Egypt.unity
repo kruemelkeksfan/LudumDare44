@@ -5455,7 +5455,7 @@ MonoBehaviour:
   spawnChance: 60
   citizenDisplayedPerCount: 10
   intervall: 1
-  trys: 6
+  trys: 3
   foodManager: {fileID: 2019074681}
   foodSlider: {fileID: 1507889309}
   citizenGroupPrefabs:
@@ -7417,7 +7417,7 @@ GameObject:
   - component: {fileID: 552966014}
   - component: {fileID: 552966015}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: ToggleExtraFood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7441,8 +7441,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 311.6, y: -173.7}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: 304.15, y: -164.3}
+  m_SizeDelta: {x: 179.5, y: 20.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &552966015
 MonoBehaviour:
@@ -10223,12 +10223,12 @@ MonoBehaviour:
   extraFoodToggle: {fileID: 552966015}
   WorkerCountDisplay: {fileID: 1381132524}
   preText: 'Query worker: '
-  extraProductionMulti: 0
+  extraProductionMulti: 2
   startingWorkforce: 10
   highDeathCount: 100
   minOneDieChance: 3
   cutHighLossChance: 2
-  workerDieRate: 250
+  workerDieRate: 200
   noNegativeWorkers: 1
   materialCountDisplay: {fileID: 351670348}
   materialText: 'Material: '
@@ -10248,8 +10248,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 325, y: 15, z: 325}
-  m_Center: {x: 0, y: 7.45, z: 0}
+  m_Size: {x: 325, y: 30, z: 325}
+  m_Center: {x: 0, y: 15, z: 0}
 --- !u!4 &817633312
 Transform:
   m_ObjectHideFlags: 0
@@ -10498,6 +10498,7 @@ MonoBehaviour:
   toggle1: {fileID: 1030786844}
   toggle10: {fileID: 1230156232}
   toggle100: {fileID: 2124961620}
+  toggleExtraFood: {fileID: 552966015}
 --- !u!1001 &839848900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12847,6 +12848,11 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 418567454}
+    - target: {fileID: 4070709195791313244, guid: 854b3fecea68b29498f49be890314eba,
+        type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6476004439895426714, guid: 854b3fecea68b29498f49be890314eba,
         type: 3}
       propertyPath: m_Sprite
@@ -16396,7 +16402,7 @@ PrefabInstance:
     - target: {fileID: 4070709195791313244, guid: 854b3fecea68b29498f49be890314eba,
         type: 3}
       propertyPath: m_IsOn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4070709195791313244, guid: 854b3fecea68b29498f49be890314eba,
         type: 3}
@@ -16923,12 +16929,12 @@ MonoBehaviour:
   extraFoodToggle: {fileID: 552966015}
   WorkerCountDisplay: {fileID: 1896624843}
   preText: 'Builing: '
-  extraProductionMulti: 0
-  startingWorkforce: 25
+  extraProductionMulti: 2
+  startingWorkforce: 15
   highDeathCount: 100
   minOneDieChance: 3
   cutHighLossChance: 2
-  workerDieRate: 150
+  workerDieRate: 125
   noNegativeWorkers: 0
   missingMaterialDisplay: {fileID: 973891571}
   building: {fileID: 5717041}
@@ -16953,8 +16959,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 15, z: 1}
-  m_Center: {x: 0, y: 7.45, z: 0}
+  m_Size: {x: 1, y: 30, z: 1}
+  m_Center: {x: 0, y: 15, z: 0}
 --- !u!23 &1243481175
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20958,8 +20964,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 306.74, y: -215.1}
-  m_SizeDelta: {x: 115.32, y: 20}
+  m_AnchoredPosition: {x: 294.4, y: -208.2}
+  m_SizeDelta: {x: 115.32, y: 20.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1507889309
 MonoBehaviour:
@@ -25682,7 +25688,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.7, y: 20}
+  m_AnchoredPosition: {x: 2.695, y: 20}
   m_SizeDelta: {x: 180.69, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1972745619
@@ -26260,16 +26266,16 @@ MonoBehaviour:
   extraFoodToggle: {fileID: 552966015}
   WorkerCountDisplay: {fileID: 99318392}
   preText: 'Farming: '
-  extraProductionMulti: 0
-  startingWorkforce: 25
+  extraProductionMulti: 2
+  startingWorkforce: 35
   highDeathCount: 100
   minOneDieChance: 3
   cutHighLossChance: 2
-  workerDieRate: 100
+  workerDieRate: 75
   noNegativeWorkers: 1
   materialCountDisplay: {fileID: 1750641381}
   materialText: 'Food: '
-  materialPerWorker: 7
+  materialPerWorker: 6
   intervall: 1
   startingMaterial: 150
   criticalValue: 50
@@ -26285,8 +26291,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 15, z: 1}
-  m_Center: {x: 0, y: 7.45, z: 0}
+  m_Size: {x: 1, y: 30, z: 1}
+  m_Center: {x: 0, y: 15, z: 0}
 --- !u!23 &2019074684
 MeshRenderer:
   m_ObjectHideFlags: 0

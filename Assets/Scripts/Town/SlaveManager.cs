@@ -12,9 +12,9 @@ public class SlaveManager : MonoBehaviour
 
     int slaveCount = 0;
     [SerializeField] int initalSlaveCount;
-    int slavesPerShoot = 1;
-    int slavesPerBullet = 1;
-    int bulletCount = 1;
+    int slavesPerShoot = 10;
+    int slavesPerBullet = 2;
+    int bulletCount = 5;
 
     public int SlavesPerShoot
     {
