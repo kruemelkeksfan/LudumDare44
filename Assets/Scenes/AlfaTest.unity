@@ -23873,6 +23873,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 805024194}
   canvas: {fileID: 387372961}
+  audioSource: {fileID: 0}
+  winMusic: {fileID: 8300000, guid: ac60efdb860fa664f86cf8e9a3288eb8, type: 3}
 --- !u!4 &1858554127
 Transform:
   m_ObjectHideFlags: 0
@@ -25997,7 +25999,7 @@ GameObject:
   - component: {fileID: 2062910035}
   - component: {fileID: 2062910034}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26016,8 +26018,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LOOK_AT: {x: 0, y: 0, z: 0}
+  MOVEMENT_SPEED: 40
+  ROTATION_SPEED: 40
   SCROLL_SPEED: 25
-  MAXIMUM_ANGLE: 60
+  MIN_HEIGHT: 20
+  MAX_HEIGHT: 100
+  MIN_SCROLL_DISTANCE: 20
+  MAX_SCROLL_DISTANCE: 400
+  MIN_ANGLE: 5
+  MAX_ANGLE: 85
 --- !u!82 &2062910035
 AudioSource:
   m_ObjectHideFlags: 0
@@ -26622,6 +26631,7 @@ MonoBehaviour:
   progressPerWorker: 1
   materialPerWorker: 2
   materailCollector: {fileID: 1130327856}
+  buildSfx: []
 --- !u!65 &2074586850
 BoxCollider:
   m_ObjectHideFlags: 0

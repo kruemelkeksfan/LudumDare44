@@ -16,7 +16,7 @@ public class BuildingManager : WorkingManager
     float progress = 0;
     float step = 0;
     float nextStep = 0;
-    int lastPart = 0;
+    int lastPart = 1;
     Transform[] buildingChilds;
     List<Transform> buildingParts;
     GameManager gameManager;
@@ -41,8 +41,10 @@ public class BuildingManager : WorkingManager
         }
         step = gesProgress / buildingParts.Count;
         nextStep = step;
+        buildingParts[0].gameObject.SetActive(true);
         StartCoroutine(Build());
         WorkerCountDisplay.text = preText + worker;
+
     }
 
     IEnumerator Build()
