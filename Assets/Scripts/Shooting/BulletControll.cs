@@ -8,7 +8,7 @@ public class BulletControll : MonoBehaviour
     Rigidbody rigidbody;
     [SerializeField] int forceMulti = 65;
     public SlaveShooter slaveShooter;
-    public int SlaveCount;
+    public int slaveCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +29,7 @@ public class BulletControll : MonoBehaviour
         if (other.tag == "WorkingSite")
         {
             WorkingManager workingManager = other.gameObject.GetComponent<WorkingManager>();
-            workingManager.AddWorker(SlaveCount);
+            workingManager.AddWorker(slaveCount);
             audioSource.Stop();
             audioSource.spatialBlend = 0;
             audioSource.clip = slaveShooter.GetSplashSfx();
@@ -41,7 +41,13 @@ public class BulletControll : MonoBehaviour
             //do damage
             Object.Destroy(gameObject, 2);
         }
+        else if (other.tag == "Border")
+        {
+            //do damage
+            slaveShooter.AddFreedSlaves(slaveCount);
+            Object.Destroy(gameObject, 2);
+        }
 
-        
+
     }
 }

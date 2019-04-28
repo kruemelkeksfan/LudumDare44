@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class SlaveShooter : MonoBehaviour
@@ -12,7 +13,9 @@ public class SlaveShooter : MonoBehaviour
     [SerializeField] SlaveManager slaveManager;
     [SerializeField] GameObject citizen;
     [SerializeField] int fireIntervall = 1;
-
+    [SerializeField] Text freedSlavesDisplay;
+    int count = 0;
+   
     Camera cam;
     float distance = 10.0f;
     float nextFireTime;
@@ -38,9 +41,14 @@ public class SlaveShooter : MonoBehaviour
             isActive = value;
         }
     }
-
+    public void AddFreedSlaves(int count)
+    {
+        this.count += count;
+        freedSlavesDisplay.text = "Slaves freed: " + this.count;
+    }
     void Start()
     {
+        freedSlavesDisplay.text = "Slaves freed: " + count;
         cam = GetComponent<Camera>();
     }
 
@@ -82,7 +90,7 @@ public class SlaveShooter : MonoBehaviour
                     GameObject newGameObject = Instantiate(citizen, gameObject.transform.position, Quaternion.identity);
                     BulletControll bulletControll = newGameObject.GetComponent<BulletControll>();
                     bulletControll.transform.LookAt(position);
-                    bulletControll.SlaveCount = slaveManager.SlavesPerBullet;
+                    bulletControll.slaveCount = slaveManager.SlavesPerBullet;
                     bulletControll.slaveShooter = this;
                     count++;
                 }

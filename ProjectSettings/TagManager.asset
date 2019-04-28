@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameManager
   - WorkingSite
+  - Border
   layers:
   - Default
   - TransparentFX
