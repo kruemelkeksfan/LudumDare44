@@ -5,19 +5,27 @@ using UnityEngine;
 public class CentralisticCameraController : MonoBehaviour
 	{
 	public Vector3 LOOK_AT = Vector3.zero;
-	public float SCROLL_SPEED = 5.0f;
-	public float MAXIMUM_ANGLE = 60.0f;
+	public float MOVEMENT_SPEED = 40.0f;
+	public float ROTATION_SPEED = 40.0f;
+	public float SCROLL_SPEED = 100.0f;
+	public float MIN_HEIGHT = 20.0f;
+	public float MAX_HEIGHT = 100.0f;
+	public float MIN_SCROLL_DISTANCE = 20.0f;
+	public float MAX_SCROLL_DISTANCE = 400.0f;
+	public float MIN_ANGLE = 5.0f;
+	public float MAX_ANGLE = 85.0f;
 
 	private void Update()
 		{
-		// Hide and lock cursor on MMB down
+		Vector3 direction = new Vector3();
+		Vector3 rotation = transform.rotation.eulerAngles;
+
+		// Hide and lock cursor on MMB down and show and unlock cursor on MMB up
 		if(Input.GetMouseButtonDown(2))
 			{
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Locked;
 			}
-
-		// Show and unlock cursor on MMB release
 		if(Input.GetMouseButtonUp(2))
 			{
 			Cursor.visible = true;
@@ -25,10 +33,10 @@ public class CentralisticCameraController : MonoBehaviour
 			}
 
 		// Get mouse movement directions
-		Vector3 direction = new Vector3();
 		if(Input.GetMouseButton(2))
 			{
-			direction -= new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0.0f);
+			direction -= new Vector3(Input.GetAxis("Mouse X"), 0.0f, 0.0f);
+			rotation.x -= Input.GetAxis("Mouse Y") * ROTATION_SPEED;
 			}
 
 		// Get keyboard movement directions
@@ -49,20 +57,52 @@ public class CentralisticCameraController : MonoBehaviour
 			direction += Vector3.right;
 			}
 
-		// Translate and rotate camera
-		Vector3 rotation = transform.rotation.eulerAngles;
-		//Debug.Log("o: " + direction.y);
-		if((rotation.x < 180.0f && rotation.x > MAXIMUM_ANGLE && direction.y > 0)
-			|| (rotation.x >= 180.0f && rotation.x < 360.0f - MAXIMUM_ANGLE && direction.y < 0))
+		// Translate camera
+		transform.position += Quaternion.Euler(rotation) * (direction * MOVEMENT_SPEED);
+
+		// Zoom with ScrollWheel
+		float scroll = Input.GetAxis("Mouse ScrollWheel");
+		float scrolldistance = (transform.position - LOOK_AT).magnitude;
+		if((scrolldistance >= MIN_SCROLL_DISTANCE && scrolldistance <= MAX_SCROLL_DISTANCE)
+			|| (scroll < 0 && scrolldistance <= MIN_SCROLL_DISTANCE)
+			|| (scroll > 0 && scrolldistance >= MAX_SCROLL_DISTANCE))
 			{
-			Debug.Log(rotation.x + " " + direction.y);
-			direction.y = 0.0f;
+			transform.position += (transform.rotation * Vector3.forward) * (scroll * SCROLL_SPEED);
 			}
-		//Debug.Log("n: " + direction.y);
 
-		transform.position += Quaternion.Euler(rotation.x, rotation.y, 0) * direction;
-		transform.position += (transform.rotation * Vector3.forward) * (Input.GetAxis("Mouse ScrollWheel") * SCROLL_SPEED); // Zoom with ScrollWheel
+		// After applying movement refocus monument
+		rotation.y = Quaternion.LookRotation(LOOK_AT - transform.position).eulerAngles.y;
 
-		transform.LookAt(LOOK_AT);
+		// After transformation firming, to avoid too large threshold violation
+		scrolldistance = (transform.position - LOOK_AT).magnitude;
+		if(scrolldistance < MIN_SCROLL_DISTANCE)
+			{
+			transform.position += (Quaternion.Euler(rotation) * Vector3.back) * (MIN_SCROLL_DISTANCE - scrolldistance);
+			}
+		else if(scrolldistance > MAX_SCROLL_DISTANCE)
+			{
+			transform.position += (Quaternion.Euler(rotation) * Vector3.forward) * (scrolldistance - MAX_SCROLL_DISTANCE);
+			}
+		if(transform.position.y < MIN_HEIGHT)
+			{
+			transform.position = new Vector3(transform.position.x, MIN_HEIGHT, transform.position.z);
+			}
+		else if(transform.position.y > MAX_HEIGHT)
+			{
+			transform.position = new Vector3(transform.position.x, MAX_HEIGHT, transform.position.z);
+			}
+
+		// After rotation firming, to avoid too large threshold violation
+		if(rotation.x < MIN_ANGLE)
+			{
+			rotation.x = MIN_ANGLE;
+			}
+		else if(rotation.x < 180.0f && rotation.x > MAX_ANGLE)
+			{
+			rotation.x = MAX_ANGLE;
+			}
+
+		// Rotate camera
+		transform.rotation = Quaternion.Euler(rotation);
 		}
 	}
