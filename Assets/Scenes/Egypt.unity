@@ -2792,7 +2792,7 @@ MonoBehaviour:
   highDeathCount: 100
   minOneDieChance: 3
   cutHighLossChance: 2
-  workerDieRate: 1
+  workerDieRate: 300
   noNegativeWorkers: 1
   materialCountDisplay: {fileID: 874582747}
   materialText: 'Material: '
@@ -2910,7 +2910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 203}
+  m_AnchoredPosition: {x: 0, y: 203.01}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.4999999, y: 0.49999988}
 --- !u!4 &232351211 stripped
@@ -5854,7 +5854,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 142.12018, y: 205.82881}
+  m_AnchoredPosition: {x: 136.57, y: 199.18}
   m_SizeDelta: {x: 113.15, y: 12.55}
   m_Pivot: {x: 0.4999999, y: 0.49999988}
 --- !u!114 &490553941
@@ -6486,7 +6486,7 @@ MonoBehaviour:
   highDeathCount: 100
   minOneDieChance: 3
   cutHighLossChance: 2
-  workerDieRate: 2
+  workerDieRate: 200
   noNegativeWorkers: 0
   missingMaterialDisplay: {fileID: 1292990956}
   building: {fileID: 1088582257}

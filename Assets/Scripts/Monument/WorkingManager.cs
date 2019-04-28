@@ -36,7 +36,7 @@ public class WorkingManager : MonoBehaviour
 
     protected int KillWorker()
     {
-        int dying = Mathf.RoundToInt(worker * workerDieRate * 0.1f);
+        int dying = Mathf.RoundToInt(worker * ((workerDieRate * 0.1f)/100));
         if (dying < 1)
         {
             int roll = Random.Range(0, 10);
