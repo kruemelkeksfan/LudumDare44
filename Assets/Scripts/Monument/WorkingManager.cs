@@ -7,12 +7,14 @@ public class WorkingManager : MonoBehaviour
 {
     [SerializeField] protected Text WorkerCountDisplay;
     [SerializeField] protected string preText = "working Count: ";
+    [SerializeField] protected int startingWorkforce;
     [Header("Dying Worker")]
     [SerializeField] int highDeathCount = 100;
     [Range(1, 10)] [SerializeField] int minOneDieChance;
     [Range(1, 10)] [SerializeField] int cutHighLossChance;
     [Range(1,1000)][SerializeField] int workerDieRate;
     protected int worker;
+    [SerializeField] protected bool noNegativeWorkers; 
 
     public int Worker
     {
@@ -54,6 +56,10 @@ public class WorkingManager : MonoBehaviour
             {
                 dying = Mathf.RoundToInt(dying * 0.5f);
             }
+        }
+        if (noNegativeWorkers && Worker-dying < 0)
+        {
+            dying = 0;
         }
         return dying;
     }

@@ -7,6 +7,7 @@ public class CitizenSpawner : MonoBehaviour
     [SerializeField] int spawnChance = 60;
     [SerializeField] int citizenDisplayedPerCount = 10;
     [SerializeField] int intervall = 5;
+    [SerializeField] int trys = 4;
 
     [SerializeField] CitizenGroup[] citizenGroupPrefabs;
     [SerializeField] GameObject spawnPointHolder;
@@ -24,26 +25,32 @@ public class CitizenSpawner : MonoBehaviour
     {
         while (true)
         {
-            int roll = Random.Range(0, 100);
-            if (roll < spawnChance)
+            int count = 0;
+            while(count < trys)
             {
-                roll = Random.Range(0, spawnPoints.Length);
-                if(spawnPoints[roll].CitizenGroup == null)
+                int roll = Random.Range(0, 100);
+                if (roll < spawnChance)
                 {
-                    int rollGroup = Random.Range(0, citizenGroupPrefabs.Length);
-                    int displayedCitizen = 1;
-                    if (rollGroup > citizenDisplayedPerCount)
+                    roll = Random.Range(0, spawnPoints.Length);
+                    if (spawnPoints[roll].CitizenGroup == null)
                     {
-                        displayedCitizen = Mathf.RoundToInt(rollGroup * 0.1f);
-                    }
+                        int rollGroup = Random.Range(0, citizenGroupPrefabs.Length);
+                        int displayedCitizen = 1;
+                        if (rollGroup > citizenDisplayedPerCount)
+                        {
+                            displayedCitizen = Mathf.RoundToInt(rollGroup * 0.1f);
+                        }
 
-                    CitizenGroup newCitizenGroup = Instantiate(citizenGroupPrefabs[rollGroup], spawnPoints[roll].transform);
-                    newCitizenGroup.SlaveManager = slaveManager;
-                    newCitizenGroup.transform.localPosition = Vector3.zero;
-                    newCitizenGroup.spawnPoint = spawnPoints[roll];
-                    spawnPoints[roll].CitizenGroup = newCitizenGroup;
+                        CitizenGroup newCitizenGroup = Instantiate(citizenGroupPrefabs[rollGroup], spawnPoints[roll].transform);
+                        newCitizenGroup.SlaveManager = slaveManager;
+                        newCitizenGroup.transform.localPosition = Vector3.zero;
+                        newCitizenGroup.spawnPoint = spawnPoints[roll];
+                        spawnPoints[roll].CitizenGroup = newCitizenGroup;
+                    }
                 }
+                count++;
             }
+            
             yield return new WaitForSeconds(intervall);
         }
     }
