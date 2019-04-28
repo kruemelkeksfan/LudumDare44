@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 public class SlaveShooter : MonoBehaviour
 {
-    public bool isActive = false;
+    bool isActive = false;
+    [SerializeField] GameObject ShootingDisplay;
     [SerializeField] AudioClip[] screamSfx;
     [SerializeField] AudioClip splashSfx;
     [SerializeField] SlaveManager slaveManager;
@@ -25,7 +26,18 @@ public class SlaveShooter : MonoBehaviour
     {
         return splashSfx;
     }
-
+    public bool IsActive
+    {
+        get
+        {
+            return isActive;
+        }
+        set
+        {
+            ShootingDisplay.SetActive(value);
+            isActive = value;
+        }
+    }
 
     void Start()
     {
@@ -34,21 +46,21 @@ public class SlaveShooter : MonoBehaviour
 
     private void Update()
     {
-        if (isActive)
+        if (IsActive)
         {
             if (Input.GetButtonDown("ToggleFiremode"))
             {
-                isActive = false;
+                IsActive = false;
             }
             if (Input.GetMouseButtonDown(1))
             {
-                isActive = false;
+                IsActive = false;
             }
             else if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
                 if (slaveManager.SlaveCount < slaveManager.SlavesPerShoot)
                 {
-                    isActive = false;
+                    IsActive = false;
                     return;
                 }
                 if (Time.time < nextFireTime)
@@ -79,12 +91,12 @@ public class SlaveShooter : MonoBehaviour
         }
         else if (Input.GetButtonDown("ToggleFiremode"))
         {
-            isActive = true;
+            IsActive = true;
         }
     }
     
     public void Activate()
     {
-        isActive = true;
+        IsActive = true;
     }
 }

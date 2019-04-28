@@ -66,7 +66,7 @@ public class SlaveManager : MonoBehaviour
     }
     public void AddSlaves(int count)
     {
-        slaveShooter.isActive = false;
+        slaveShooter.IsActive = false;
         pickUpSoundHolder.Play();
         slaveCount += count;
         SlaveCountDisplay.text = preText + slaveCount;

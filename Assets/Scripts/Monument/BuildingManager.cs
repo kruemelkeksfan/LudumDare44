@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class BuildingManager : WorkingManager
 {
+    [SerializeField] Text missingMaterialDisplay;
     [SerializeField] Transform building;
     [SerializeField] int intervall;
     [SerializeField] int gesProgress;
     [SerializeField] int progressPerWorker;
     [SerializeField] int materialPerWorker;
+    [SerializeField] CollectorManager materailCollector;
+    [SerializeField] AudioClip[] buildSfx;
     float progress = 0;
     float step = 0;
     float nextStep = 0;
@@ -17,9 +20,11 @@ public class BuildingManager : WorkingManager
     Transform[] buildingChilds;
     List<Transform> buildingParts;
     GameManager gameManager;
+    AudioSource audioSource;
 
     void Start()
     {
+        worker = startingWorkforce;
         gameManager = GameObject.FindObjectOfType<GameManager>();
         buildingParts = new List<Transform>();
         buildingChilds = building.GetComponentsInChildren<Transform>();
@@ -44,10 +49,26 @@ public class BuildingManager : WorkingManager
     {
         while (true)
         {
-            progress += progressPerWorker * worker;
+            if (materailCollector.Material < worker * materialPerWorker)
+            {
+                int productiveWorker = Mathf.RoundToInt(materailCollector.Material / materialPerWorker);
+                progress += progressPerWorker * productiveWorker;
+                missingMaterialDisplay.gameObject.SetActive(true);
+                missingMaterialDisplay.text = "Missing: " + (materailCollector.Material - worker * materialPerWorker * -1);
+                materailCollector.RemoveMaterial(productiveWorker * materialPerWorker);
+            }
+            else
+            {
+                missingMaterialDisplay.gameObject.SetActive(false);
+                progress += progressPerWorker * worker;
+                materailCollector.RemoveMaterial(worker * materialPerWorker);
+            }
             RemoveWorker(KillWorker());
             while (progress > nextStep)
             {
+                audioSource = gameObject.GetComponent<AudioSource>();
+                audioSource.clip = buildSfx[Random.Range(0, buildSfx.Length)];
+                audioSource.Play();
                 buildingParts[lastPart].gameObject.SetActive(true);
                 nextStep += step;
                 lastPart++;
