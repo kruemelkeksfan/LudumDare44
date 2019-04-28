@@ -12,8 +12,10 @@ public class BuildingManager : WorkingManager
     [SerializeField] int progressPerWorker;
     [SerializeField] int materialPerWorker;
     [SerializeField] CollectorManager materailCollector;
+    [SerializeField] CombatManager combatManager;
     [SerializeField] AudioClip[] buildSfx;
     float progress = 0;
+    float lastStep = 0;
     float step = 0;
     float nextStep = 0;
     int lastPart = 1;
@@ -47,17 +49,36 @@ public class BuildingManager : WorkingManager
 
     }
 
+    public void LossProgress(float value)
+    {
+        progress -= value;
+        while (progress < lastStep)
+        {
+            if (lastPart == 1)
+            {
+                break;
+            }
+            lastPart--;
+            buildingParts[lastPart].gameObject.SetActive(false);
+            nextStep = lastStep;
+            lastStep -= step;
+        }
+    }
+
     IEnumerator Build()
     {
+        yield return new WaitForSeconds(intervall);
         while (true)
         {
+            float progressGain;
             if (materailCollector.Material < worker * materialPerWorker)
             {
                 int productiveWorker = Mathf.RoundToInt(materailCollector.Material / materialPerWorker);
-                progress += progressPerWorker * productiveWorker;
+
+                progressGain = progressPerWorker * productiveWorker;
                 if (extraFoodToggle.isOn)
                 {
-                    progress = progress * extraProductionMulti;
+                    progressGain = progressGain * extraProductionMulti;
                 }
                 missingMaterialDisplay.gameObject.SetActive(true);
                 missingMaterialDisplay.text = "Missing: " + (materailCollector.Material - worker * materialPerWorker * -1);
@@ -66,26 +87,36 @@ public class BuildingManager : WorkingManager
             else
             {
                 missingMaterialDisplay.gameObject.SetActive(false);
-                progress += progressPerWorker * worker;
+                progressGain = progressPerWorker * worker;
                 materailCollector.RemoveMaterial(worker * materialPerWorker);
             }
             RemoveWorker(KillWorker());
-            while (progress > nextStep)
+            if (progressGain < 0)
             {
-                audioSource = gameObject.GetComponent<AudioSource>();
-                audioSource.clip = buildSfx[Random.Range(0, buildSfx.Length)];
-                audioSource.Play();
-                buildingParts[lastPart].gameObject.SetActive(true);
-                nextStep += step;
-                lastPart++;
+                LossProgress(progressGain * -1f);
+            }
+            else
+            {
+                progress += progressGain;
+                while (progress > nextStep)
+                {
+                    audioSource = gameObject.GetComponent<AudioSource>();
+                    audioSource.clip = buildSfx[Random.Range(0, buildSfx.Length)];
+                    audioSource.Play();
+                    combatManager.RollForAttack();
+                    buildingParts[lastPart].gameObject.SetActive(true);
+                    lastStep = nextStep;
+                    nextStep += step;
+                    lastPart++;
+                    if (lastPart >= buildingParts.Count)
+                    {
+                        break;
+                    }
+                }
                 if (lastPart >= buildingParts.Count)
                 {
                     break;
                 }
-            }
-            if (lastPart >= buildingParts.Count)
-            {
-                break;
             }
             yield return new WaitForSeconds(intervall);
         }

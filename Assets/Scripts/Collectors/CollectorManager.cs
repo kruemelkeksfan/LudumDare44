@@ -49,9 +49,9 @@ public class CollectorManager : WorkingManager
 
     private void Start()
     {
+        normalColor = materialCountDisplay.color;
         worker = startingWorkforce;
         material = startingMaterial;
-        normalColor = materialCountDisplay.color;
         WorkerCountDisplay.text = preText + worker;
         materialCountDisplay.text = materialText + material;
         foodManager = GetComponent<FoodManager>();
@@ -60,6 +60,7 @@ public class CollectorManager : WorkingManager
 
     protected IEnumerator Collect()
     {
+        yield return new WaitForSeconds(intervall);
         while (true)
         {
             int newMaterial = materialPerWorker * worker;

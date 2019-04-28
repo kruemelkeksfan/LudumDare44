@@ -7,6 +7,8 @@ TagManager:
   - GameManager
   - WorkingSite
   - Border
+  - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
