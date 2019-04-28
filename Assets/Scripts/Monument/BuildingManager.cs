@@ -12,7 +12,7 @@ public class BuildingManager : WorkingManager
     [SerializeField] int progressPerWorker;
     [SerializeField] int materialPerWorker;
     [SerializeField] CollectorManager materailCollector;
-    [SerializeField] AudioClip buildSfx;
+    [SerializeField] AudioClip[] buildSfx;
     float progress = 0;
     float step = 0;
     float nextStep = 0;
@@ -67,7 +67,7 @@ public class BuildingManager : WorkingManager
             while (progress > nextStep)
             {
                 audioSource = gameObject.GetComponent<AudioSource>();
-                audioSource.clip = buildSfx;
+                audioSource.clip = buildSfx[Random.Range(0, buildSfx.Length)];
                 audioSource.Play();
                 buildingParts[lastPart].gameObject.SetActive(true);
                 nextStep += step;

@@ -6496,7 +6496,11 @@ MonoBehaviour:
   progressPerWorker: 1
   materialPerWorker: 2
   materailCollector: {fileID: 228673681}
-  buildSfx: {fileID: 8300000, guid: d2e42bd767956bc499c5482f7107de3e, type: 3}
+  buildSfx:
+  - {fileID: 8300000, guid: d2e42bd767956bc499c5482f7107de3e, type: 3}
+  - {fileID: 8300000, guid: 359ae8c1ea7620d42b56b5996d431536, type: 3}
+  - {fileID: 8300000, guid: 4a9f9ccd31d32ae4e97690ec8a2826db, type: 3}
+  - {fileID: 8300000, guid: 0562cffb72fb6ab489c205ede6cbb32a, type: 3}
 --- !u!65 &570931097
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7637,6 +7641,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 492777527}
   canvas: {fileID: 498850878}
+  audioSource: {fileID: 0}
+  winMusic: {fileID: 8300000, guid: ac60efdb860fa664f86cf8e9a3288eb8, type: 3}
 --- !u!4 &680914336
 Transform:
   m_ObjectHideFlags: 0
@@ -20052,7 +20058,7 @@ GameObject:
   - component: {fileID: 1754362137}
   - component: {fileID: 1754362136}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
