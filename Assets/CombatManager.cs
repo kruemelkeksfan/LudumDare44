@@ -22,6 +22,7 @@ public class CombatManager : MonoBehaviour
     Transform[] spawnPointChilds;
     List<Transform> enemySpawnPoints;
     bool combat;
+    bool waiting;
     AudioSource audioSource;
 
     void Start()
@@ -39,19 +40,14 @@ public class CombatManager : MonoBehaviour
 
     void Update()
     {
-        if (combat && enemies.Count < 1)
+        if (combat && !waiting && enemies.Count < 1)
         {
-<<<<<<< HEAD
-            //endMusic
             attackWarning.SetActive(false);
-            combat = false;
-=======
             audioSource = GameObject.Find("MainCamera").GetComponent<AudioSource>();
             audioSource.Stop();
             audioSource.clip = normalMusic;
             audioSource.Play();
             combat = false;            
->>>>>>> a61bdb5993fe1d37ab0fabc242dd2e6876dafb71
         }
     }
 
@@ -60,15 +56,12 @@ public class CombatManager : MonoBehaviour
         int roll = Random.Range(0, 100);
         if (roll < attackChance)
         {
-<<<<<<< HEAD
-            //startFightMusik
-            attackWarning.SetActive(true);
-=======
->>>>>>> a61bdb5993fe1d37ab0fabc242dd2e6876dafb71
             StartCoroutine(WaitForAttack());
             if (combat == false)
             {
                 combat = true;
+                waiting = true;
+                attackWarning.SetActive(true);
                 audioSource = GameObject.Find("MainCamera").GetComponent<AudioSource>();
                 audioSource.Stop();
                 audioSource.clip = fightMusic;
@@ -81,6 +74,7 @@ public class CombatManager : MonoBehaviour
     {        
         int roll = Random.Range(minEnemyCount, maxEnemyCount + 1);
         StartCoroutine(Spawn(roll));
+        waiting = false;
     }
 
     IEnumerator Spawn(int roll)
@@ -89,7 +83,8 @@ public class CombatManager : MonoBehaviour
         while (count < roll)
         {
             int rollSpawn = Random.Range(0, enemySpawnPoints.Count);
-            Instantiate(enemyPrefab, enemySpawnPoints[rollSpawn]);
+            Enemy newEnemy = Instantiate(enemyPrefab, enemySpawnPoints[rollSpawn]);
+            enemies.Add(newEnemy);
             count++;
             yield return new WaitForSeconds(spawnIntervall);
         }
