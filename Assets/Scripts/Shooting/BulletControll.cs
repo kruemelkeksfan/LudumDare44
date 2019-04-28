@@ -6,6 +6,7 @@ public class BulletControll : MonoBehaviour
 {
     AudioSource audioSource;
     Rigidbody rigidbody;
+    [SerializeField] int forceMulti = 65;
     public SlaveShooter slaveShooter;
     public int SlaveCount;
     // Start is called before the first frame update
@@ -20,7 +21,7 @@ public class BulletControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rigidbody.AddRelativeForce(Vector3.forward * 50);
+        rigidbody.AddRelativeForce(Vector3.forward * forceMulti);
     }
 
     private void OnTriggerEnter(Collider other)

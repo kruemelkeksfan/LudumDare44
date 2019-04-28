@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18d25ad053d41d4ab6a26547e2acad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceMulti: 60
   slaveShooter: {fileID: 0}
   SlaveCount: 0
 --- !u!1001 &8578016015076303563

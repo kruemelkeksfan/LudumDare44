@@ -14,8 +14,14 @@ public class CitizenGroup : MonoBehaviour
 
     private void Start()
     {
-        citizenCount = Random.Range(minCount, maxCount + 1);
         StartCoroutine(Disappear());
+    }
+
+    public int ClaculateCitizenCount(float foodSliderValue)
+    {
+        citizenCount = Random.Range(minCount, maxCount + 1);
+        citizenCount = Mathf.RoundToInt(foodSliderValue * citizenCount);
+        return citizenCount;
     }
 
     private void OnMouseDown()

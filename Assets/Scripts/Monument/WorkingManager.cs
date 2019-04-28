@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class WorkingManager : MonoBehaviour
 {
+    [SerializeField] protected Toggle extraFoodToggle;
     [SerializeField] protected Text WorkerCountDisplay;
     [SerializeField] protected string preText = "working Count: ";
+    [SerializeField] protected int extraProductionMulti;
     [SerializeField] protected int startingWorkforce;
     [Header("Dying Worker")]
     [SerializeField] int highDeathCount = 100;
@@ -20,7 +22,11 @@ public class WorkingManager : MonoBehaviour
     {
         get
         {
-            return worker;
+            if (worker > 0)
+            {
+                return worker;
+            }
+            return 0;
         }
     }
     public void AddWorker(int count)

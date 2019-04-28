@@ -13,6 +13,7 @@ public class CollectorManager : WorkingManager
     [SerializeField] int criticalValue = 5;
     [SerializeField] Color criticalColor;
     Color normalColor;
+    FoodManager foodManager;
 
     protected int material;
 
@@ -53,6 +54,7 @@ public class CollectorManager : WorkingManager
         normalColor = materialCountDisplay.color;
         WorkerCountDisplay.text = preText + worker;
         materialCountDisplay.text = materialText + material;
+        foodManager = GetComponent<FoodManager>();
         StartCoroutine(Collect());
     }
 
@@ -60,8 +62,17 @@ public class CollectorManager : WorkingManager
     {
         while (true)
         {
-            AddMaterial(materialPerWorker * worker);
+            int newMaterial = materialPerWorker * worker;
+            if (extraFoodToggle.isOn)
+            {
+                newMaterial = newMaterial * extraProductionMulti;
+            }
+            AddMaterial(newMaterial);
             RemoveWorker(KillWorker());
+            if(foodManager!= null)
+            {
+                foodManager.CalculateFood(newMaterial);
+            }
             yield return new WaitForSeconds(intervall);
         }
     }

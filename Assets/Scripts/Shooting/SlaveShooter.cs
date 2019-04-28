@@ -79,7 +79,7 @@ public class SlaveShooter : MonoBehaviour
                     Vector3 position = new Vector3(Input.mousePosition.x + rollX, Input.mousePosition.y + rollY, distance);
                     position = Camera.main.ScreenToWorldPoint(position);
 
-                    GameObject newGameObject = Instantiate(citizen, gameObject.transform);
+                    GameObject newGameObject = Instantiate(citizen, gameObject.transform.position, Quaternion.identity);
                     BulletControll bulletControll = newGameObject.GetComponent<BulletControll>();
                     bulletControll.transform.LookAt(position);
                     bulletControll.SlaveCount = slaveManager.SlavesPerBullet;
