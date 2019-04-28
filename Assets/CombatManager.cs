@@ -71,13 +71,6 @@ public class CombatManager : MonoBehaviour
         StartCoroutine(Spawn(roll));
     }
 
-    void PlayMusic()
-    {
-        if (combat == true)
-        {
-            
-        }
-    }
     IEnumerator Spawn(int roll)
     {
         int count = 0;
