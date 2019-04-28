@@ -5,15 +5,16 @@ using UnityEngine;
 public class CentralisticCameraController : MonoBehaviour
 	{
 	public Vector3 LOOK_AT = Vector3.zero;
-	public float MOVEMENT_SPEED = 40.0f;
-	public float ROTATION_SPEED = 40.0f;
-	public float SCROLL_SPEED = 100.0f;
-	public float MIN_HEIGHT = 20.0f;
-	public float MAX_HEIGHT = 100.0f;
-	public float MIN_SCROLL_DISTANCE = 20.0f;
-	public float MAX_SCROLL_DISTANCE = 400.0f;
-	public float MIN_ANGLE = 5.0f;
-	public float MAX_ANGLE = 85.0f;
+	public float MOVEMENT_SPEED = 5.0f;
+	public float ROTATION_SPEED = 5.0f;
+	public float SCROLL_SPEED = 40.0f;
+	public float MIN_HEIGHT = 40.0f;
+	public float MAX_HEIGHT = 200.0f;
+	public float MIN_SCROLL_DISTANCE = 200.0f;
+	public float MAX_SCROLL_DISTANCE = 500.0f;
+	public float ROTATION_AXIS_SAFETY_DISTANCE = 100.0f;
+	public float MIN_ANGLE = 10.0f;
+	public float MAX_ANGLE = 80.0f;
 
 	private void Update()
 		{
@@ -57,8 +58,15 @@ public class CentralisticCameraController : MonoBehaviour
 			direction += Vector3.right;
 			}
 
-		// Translate camera
+		// Translate camera and check distance to rotation axis
+		Vector3 oldposition = transform.position;
 		transform.position += Quaternion.Euler(rotation) * (direction * MOVEMENT_SPEED);
+
+		Vector2 safetyvector =  new Vector2(LOOK_AT.x, LOOK_AT.z) - new Vector2(transform.position.x, transform.position.z);
+		if(safetyvector.magnitude < ROTATION_AXIS_SAFETY_DISTANCE)
+			{
+			transform.position = oldposition;
+			}
 
 		// Zoom with ScrollWheel
 		float scroll = Input.GetAxis("Mouse ScrollWheel");
