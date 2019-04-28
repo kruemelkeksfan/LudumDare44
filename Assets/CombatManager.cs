@@ -13,14 +13,18 @@ public class CombatManager : MonoBehaviour
     [SerializeField] int waitForAttackTime;
     [SerializeField] int progressLoss;
     [SerializeField] float spawnIntervall;
+    [SerializeField] AudioClip fightMusic;
+    [SerializeField] AudioClip normalMusic;
+    [SerializeField] AudioSource hitSfx;
     public List<Enemy> enemies;
 
     Transform[] spawnPointChilds;
     List<Transform> enemySpawnPoints;
     bool combat;
+    AudioSource audioSource;
 
     void Start()
-    {
+    {       
         enemySpawnPoints = new List<Transform>();
         spawnPointChilds = spawnPointHolder.GetComponentsInChildren<Transform>();
         foreach (Transform spawnPointChild in spawnPointChilds)
@@ -31,12 +35,16 @@ public class CombatManager : MonoBehaviour
             }
         }
     }
+
     void Update()
     {
         if (combat && enemies.Count < 1)
         {
-            //endMusic
-            combat = false;
+            audioSource = GameObject.Find("MainCamera").GetComponent<AudioSource>();
+            audioSource.Stop();
+            audioSource.clip = normalMusic;
+            audioSource.Play();
+            combat = false;            
         }
     }
 
@@ -45,18 +53,31 @@ public class CombatManager : MonoBehaviour
         int roll = Random.Range(0, 100);
         if (roll < attackChance)
         {
-            //startFightMusik
             StartCoroutine(WaitForAttack());
+            if (combat == false)
+            {
+                combat = true;
+                audioSource = GameObject.Find("MainCamera").GetComponent<AudioSource>();
+                audioSource.Stop();
+                audioSource.clip = fightMusic;
+                audioSource.Play();                
+            }
         }
     }
 
     void StartAttack()
-    {
-        combat = true;
+    {        
         int roll = Random.Range(minEnemyCount, maxEnemyCount + 1);
         StartCoroutine(Spawn(roll));
     }
 
+    void PlayMusic()
+    {
+        if (combat == true)
+        {
+            
+        }
+    }
     IEnumerator Spawn(int roll)
     {
         int count = 0;
@@ -71,7 +92,7 @@ public class CombatManager : MonoBehaviour
 
     public void Hit (Enemy enemy)
     {
-        //play sfx
+        hitSfx.Play();
         buildingManager.LossProgress(progressLoss);
     }
 
