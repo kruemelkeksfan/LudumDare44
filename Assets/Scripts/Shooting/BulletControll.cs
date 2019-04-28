@@ -38,12 +38,12 @@ public class BulletControll : MonoBehaviour
         }
         else if (other.tag == "Enemy")
         {
-            //do damage
+            Enemy enemy = other.GetComponent<Enemy>();
+            enemy.BeenHit();
             Object.Destroy(gameObject, 2);
         }
         else if (other.tag == "Border")
         {
-            //do damage
             slaveShooter.AddFreedSlaves(slaveCount);
             Object.Destroy(gameObject, 2);
         }

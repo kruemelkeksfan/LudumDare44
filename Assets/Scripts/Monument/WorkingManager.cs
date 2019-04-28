@@ -8,7 +8,7 @@ public class WorkingManager : MonoBehaviour
     [SerializeField] protected Toggle extraFoodToggle;
     [SerializeField] protected Text WorkerCountDisplay;
     [SerializeField] protected string preText = "working Count: ";
-    [SerializeField] protected int extraProductionMulti;
+    [SerializeField] protected float extraProductionMulti;
     [SerializeField] protected int startingWorkforce;
     [Header("Dying Worker")]
     [SerializeField] int highDeathCount = 100;
