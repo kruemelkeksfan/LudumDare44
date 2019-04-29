@@ -22,7 +22,7 @@ public class CombatManager : MonoBehaviour
 
     Transform[] spawnPointChilds;
     List<Transform> enemySpawnPoints;
-    bool combat;
+    public bool combat;
     bool waiting;
     bool fadeOut = false;
     bool fadeIn = false;
