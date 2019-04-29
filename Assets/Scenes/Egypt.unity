@@ -7059,7 +7059,7 @@ MonoBehaviour:
   extraFoodToggle: {fileID: 1410278643}
   WorkerCountDisplay: {fileID: 1429735352}
   preText: 'Farming: '
-  extraProductionMulti: 1.3
+  extraProductionMulti: 1.1
   startingWorkforce: 35
   highDeathCount: 100
   minOneDieChance: 1
@@ -15737,7 +15737,7 @@ MonoBehaviour:
   extraFoodToggle: {fileID: 1410278643}
   WorkerCountDisplay: {fileID: 725405467}
   preText: 'Builing: '
-  extraProductionMulti: 1.5
+  extraProductionMulti: 1.4
   startingWorkforce: 5
   highDeathCount: 100
   minOneDieChance: 2
@@ -15746,8 +15746,8 @@ MonoBehaviour:
   noNegativeWorkers: 0
   missingMaterialDisplay: {fileID: 574617013}
   building: {fileID: 756596412}
-  gesProgress: 15000
-  progressPerWorker: 7
+  gesProgress: 17500
+  progressPerWorker: 5
   materialPerWorker: 11
   materailCollector: {fileID: 1993710908}
   combatManager: {fileID: 810348657}
@@ -29866,7 +29866,7 @@ MonoBehaviour:
   extraFoodToggle: {fileID: 1410278643}
   WorkerCountDisplay: {fileID: 1313001045}
   preText: 'Query worker: '
-  extraProductionMulti: 1.6
+  extraProductionMulti: 1.5
   startingWorkforce: 10
   highDeathCount: 100
   minOneDieChance: 3
