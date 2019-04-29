@@ -16,8 +16,17 @@ public class CentralisticCameraController : MonoBehaviour
 	public float MIN_ANGLE = 10.0f;
 	public float MAX_ANGLE = 80.0f;
 
+	private SettingManager settings = null;
+
+	private void Start()
+		{
+		settings = GameObject.Find("SettingManager").GetComponent<SettingManager>();
+		}
+
 	private void Update()
 		{
+		CAMERA_SPEED = settings.getCameraSpeed();
+
 		Vector3 direction = new Vector3();
 		Vector3 rotation = transform.rotation.eulerAngles;
 

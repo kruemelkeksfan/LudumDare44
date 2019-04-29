@@ -54,4 +54,19 @@ public class SettingManager : MonoBehaviour
 		{
 		Application.Quit();
 		}
+
+	public float getCameraSpeed()
+		{
+		return cameraspeed;
+		}
+
+	public float getMusicVolume()
+		{
+		return musicvolume;
+		}
+
+	public float getSFXVolume()
+		{
+		return sfxvolume;
+		}
 	}
