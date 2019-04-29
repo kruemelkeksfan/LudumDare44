@@ -94,6 +94,7 @@ public class CombatManager : MonoBehaviour
     public void Hit (Enemy enemy)
     {
         hitSfx.Play();
+        enemies.Remove(enemy);
         buildingManager.LossProgress(progressLoss);
     }
 

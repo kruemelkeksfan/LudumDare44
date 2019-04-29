@@ -12,7 +12,7 @@ public class SlaveShooter : MonoBehaviour
     [SerializeField] AudioClip splashSfx;
     [SerializeField] SlaveManager slaveManager;
     [SerializeField] GameObject citizen;
-    [SerializeField] int fireIntervall = 1;
+    [SerializeField] float fireIntervall = 1;
     [SerializeField] Text freedSlavesDisplay;
     int count = 0;
 
