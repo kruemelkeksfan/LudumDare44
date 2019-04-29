@@ -5,9 +5,9 @@ using UnityEngine;
 public class CentralisticCameraController : MonoBehaviour
 	{
 	public Vector3 LOOK_AT = Vector3.zero;
-	public float MOVEMENT_SPEED = 5.0f;
-	public float ROTATION_SPEED = 5.0f;
-	public float SCROLL_SPEED = 40.0f;
+	public float CAMERA_SPEED = 5.0f;
+	public float ROTATION_FACTOR = 1.0f;
+	public float SCROLL_FACTOR = 8.0f;
 	public float MIN_HEIGHT = 40.0f;
 	public float MAX_HEIGHT = 200.0f;
 	public float MIN_SCROLL_DISTANCE = 200.0f;
@@ -37,7 +37,7 @@ public class CentralisticCameraController : MonoBehaviour
 		if(Input.GetMouseButton(2))
 			{
 			direction -= new Vector3(Input.GetAxis("Mouse X"), 0.0f, 0.0f);
-			rotation.x -= Input.GetAxis("Mouse Y") * ROTATION_SPEED;
+			rotation.x -= Input.GetAxis("Mouse Y") * CAMERA_SPEED * ROTATION_FACTOR;
 			}
 
 		// Get keyboard movement directions
@@ -60,7 +60,7 @@ public class CentralisticCameraController : MonoBehaviour
 
 		// Translate camera and check distance to rotation axis
 		Vector3 oldposition = transform.position;
-		transform.position += Quaternion.Euler(rotation) * (direction * MOVEMENT_SPEED);
+		transform.position += Quaternion.Euler(rotation) * (direction * CAMERA_SPEED);
 
 		Vector2 safetyvector =  new Vector2(LOOK_AT.x, LOOK_AT.z) - new Vector2(transform.position.x, transform.position.z);
 		if(safetyvector.magnitude < ROTATION_AXIS_SAFETY_DISTANCE)
@@ -75,7 +75,7 @@ public class CentralisticCameraController : MonoBehaviour
 			|| (scroll < 0 && scrolldistance <= MIN_SCROLL_DISTANCE)
 			|| (scroll > 0 && scrolldistance >= MAX_SCROLL_DISTANCE))
 			{
-			transform.position += (transform.rotation * Vector3.forward) * (scroll * SCROLL_SPEED);
+			transform.position += (transform.rotation * Vector3.forward) * (scroll * CAMERA_SPEED * SCROLL_FACTOR);
 			}
 
 		// After applying movement refocus monument
