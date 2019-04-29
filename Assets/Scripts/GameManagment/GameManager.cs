@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -26,4 +27,9 @@ public class GameManager : MonoBehaviour
         canvas.SetActive(true);
         text.text = "Congratulations, you build the Monument";
     }
+
+	public void backToMainMenu()
+		{
+		SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+		}
 }
