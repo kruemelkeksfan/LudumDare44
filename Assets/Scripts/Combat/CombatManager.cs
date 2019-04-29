@@ -47,12 +47,9 @@ public class CombatManager : MonoBehaviour
     {
         if (combat && !waiting && enemies.Count < 1)
         {
-            attackWarning.SetActive(false);
-            
-            audioSource.Stop();
-            audioSource.clip = normalMusic;
-            audioSource.Play();
-            combat = false;            
+            attackWarning.SetActive(false);          
+            combat = false;
+            fadeOut = true;
         }
 
         if (fadeOut == true)
