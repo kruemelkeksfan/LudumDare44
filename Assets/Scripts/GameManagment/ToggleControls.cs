@@ -8,6 +8,7 @@ public class ToggleControls : MonoBehaviour
     [SerializeField] Toggle toggle1;
     [SerializeField] Toggle toggle10;
     [SerializeField] Toggle toggle100;
+	[SerializeField] Toggle toggle1000;
     [SerializeField] Toggle toggleExtraFood;
     [SerializeField] LevelTimer levelTimer;
     void Update()
@@ -23,6 +24,10 @@ public class ToggleControls : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             toggle100.isOn = true;
+        }
+		else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            toggle1000.isOn = true;
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
