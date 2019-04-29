@@ -17,17 +17,21 @@ public class CombatManager : MonoBehaviour
     [SerializeField] AudioClip fightMusic;
     [SerializeField] AudioClip normalMusic;
     [SerializeField] AudioSource hitSfx;
+    [SerializeField] float fadeSpeed;
     public List<Enemy> enemies;
 
     Transform[] spawnPointChilds;
     List<Transform> enemySpawnPoints;
     bool combat;
     bool waiting;
+    bool fadeOut = false;
+    bool fadeIn = false;
     public bool pause;
     AudioSource audioSource;
 
     void Start()
-    {       
+    {
+        audioSource = GameObject.Find("MainCamera").GetComponent<AudioSource>();
         enemySpawnPoints = new List<Transform>();
         spawnPointChilds = spawnPointHolder.GetComponentsInChildren<Transform>();
         foreach (Transform spawnPointChild in spawnPointChilds)
@@ -43,12 +47,39 @@ public class CombatManager : MonoBehaviour
     {
         if (combat && !waiting && enemies.Count < 1)
         {
-            attackWarning.SetActive(false);
-            audioSource = GameObject.Find("MainCamera").GetComponent<AudioSource>();
-            audioSource.Stop();
-            audioSource.clip = normalMusic;
-            audioSource.Play();
-            combat = false;            
+            attackWarning.SetActive(false);          
+            combat = false;
+            fadeOut = true;
+        }
+
+        if (fadeOut == true)
+        {
+            audioSource.volume -= fadeSpeed * Time.deltaTime;
+            if (audioSource.volume <= 0)
+            {
+                if(combat == true)
+                {
+                    audioSource.clip = fightMusic;
+                }
+
+                else
+                {
+                    audioSource.clip = normalMusic;
+                }
+                
+                audioSource.Play();
+                fadeOut = false;
+                fadeIn = true;
+            }
+        }
+
+        if (fadeIn == true)
+        {
+            audioSource.volume += fadeSpeed * Time.deltaTime;
+            if (audioSource.volume >= 0.4f)
+            {
+                fadeIn = false;
+            }
         }
     }
 
@@ -62,11 +93,8 @@ public class CombatManager : MonoBehaviour
             {
                 combat = true;
                 waiting = true;
-                attackWarning.SetActive(true);
-                audioSource = GameObject.Find("MainCamera").GetComponent<AudioSource>();
-                audioSource.Stop();
-                audioSource.clip = fightMusic;
-                audioSource.Play();                
+                fadeOut = true;
+                attackWarning.SetActive(true);                          
             }
         }
     }
