@@ -7,9 +7,7 @@ public class CitizenSpawner : MonoBehaviour
 {
     [SerializeField] int spawnChance = 60;
     [SerializeField] int citizenDisplayedPerCount = 10;
-    [SerializeField] int intervall = 5;
     [SerializeField] int trys = 4;
-
     [SerializeField] FoodManager foodManager;
     [SerializeField] Toggle food;
     [SerializeField] CitizenGroup[] citizenGroupPrefabs;

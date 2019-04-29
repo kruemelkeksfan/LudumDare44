@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxSidetrack = 0.03f;
     CombatManager combatManager;
     int count = 0;
-    bool decided = false;
     Vector3 direction;
     int maxCount = 0;
 
