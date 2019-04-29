@@ -19081,7 +19081,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: d5a14f0fc712e1e4cb62db7dd47aca67, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -25480,11 +25480,6 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5412557753331812308, guid: 854b3fecea68b29498f49be890314eba,
-        type: 3}
-      propertyPath: m_Text
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 6167043407719676649, guid: 854b3fecea68b29498f49be890314eba,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -25514,6 +25509,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412557753331812308, guid: 854b3fecea68b29498f49be890314eba,
+        type: 3}
+      propertyPath: m_Text
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854b3fecea68b29498f49be890314eba, type: 3}
@@ -54352,11 +54352,6 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5412557753331812308, guid: 854b3fecea68b29498f49be890314eba,
-        type: 3}
-      propertyPath: m_Text
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6167043407719676649, guid: 854b3fecea68b29498f49be890314eba,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -54386,6 +54381,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412557753331812308, guid: 854b3fecea68b29498f49be890314eba,
+        type: 3}
+      propertyPath: m_Text
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854b3fecea68b29498f49be890314eba, type: 3}
@@ -55406,11 +55406,6 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5412557753331812308, guid: 854b3fecea68b29498f49be890314eba,
-        type: 3}
-      propertyPath: m_Text
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 6167043407719676649, guid: 854b3fecea68b29498f49be890314eba,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -55440,6 +55435,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412557753331812308, guid: 854b3fecea68b29498f49be890314eba,
+        type: 3}
+      propertyPath: m_Text
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854b3fecea68b29498f49be890314eba, type: 3}
