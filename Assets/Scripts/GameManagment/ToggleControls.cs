@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CountToggleControlls : MonoBehaviour
+public class ToggleControls : MonoBehaviour
 {
     [SerializeField] Toggle toggle1;
     [SerializeField] Toggle toggle10;
     [SerializeField] Toggle toggle100;
     [SerializeField] Toggle toggleExtraFood;
+    [SerializeField] LevelTimer levelTimer;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -26,6 +27,10 @@ public class CountToggleControlls : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.R))
         {
             toggleExtraFood.isOn = !toggleExtraFood.isOn;
+        }
+        else if (Input.GetButtonDown("Pause"))
+        {
+            levelTimer.TogglePause();
         }
     }
 }

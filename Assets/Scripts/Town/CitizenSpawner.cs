@@ -21,46 +21,41 @@ public class CitizenSpawner : MonoBehaviour
     void Start()
     {
         spawnPoints = spawnPointHolder.GetComponentsInChildren<SpawnPoint>();
-        StartCoroutine(TrySpawn());
     }
 
-    IEnumerator TrySpawn()
+    public void TrySpawn()
     {
-        while (true)
+        int count = 0;
+        int currentTrys = Mathf.RoundToInt(trys * foodSlider.value);
+        if (currentTrys < 1)
         {
-            int count = 0;
-            int currentTrys = Mathf.RoundToInt(trys * foodSlider.value);
-            if (currentTrys < 1)
+            currentTrys = 1;
+        }
+        while (count < currentTrys)
+        {
+            int roll = Random.Range(0, 100);
+            if (roll < spawnChance)
             {
-                currentTrys = 1;
-            }
-            while(count < currentTrys)
-            {
-                int roll = Random.Range(0, 100);
-                if (roll < spawnChance)
+                roll = Random.Range(0, spawnPoints.Length);
+                if (spawnPoints[roll].CitizenGroup == null)
                 {
-                    roll = Random.Range(0, spawnPoints.Length);
-                    if (spawnPoints[roll].CitizenGroup == null)
+                    int rollGroup = Random.Range(0, citizenGroupPrefabs.Length);
+                    int displayedCitizen = 1;
+                    if (rollGroup > citizenDisplayedPerCount)
                     {
-                        int rollGroup = Random.Range(0, citizenGroupPrefabs.Length);
-                        int displayedCitizen = 1;
-                        if (rollGroup > citizenDisplayedPerCount)
-                        {
-                            displayedCitizen = Mathf.RoundToInt(rollGroup * 0.1f);
-                        }
-
-                        CitizenGroup newCitizenGroup = Instantiate(citizenGroupPrefabs[rollGroup], spawnPoints[roll].transform);
-                        newCitizenGroup.SlaveManager = slaveManager;
-                        int citizenCount = newCitizenGroup.ClaculateCitizenCount(foodSlider.value);
-                        foodManager.AddFoodNeededForSpawning(citizenCount);
-                        newCitizenGroup.transform.localPosition = Vector3.zero;
-                        newCitizenGroup.spawnPoint = spawnPoints[roll];
-                        spawnPoints[roll].CitizenGroup = newCitizenGroup;
+                        displayedCitizen = Mathf.RoundToInt(rollGroup * 0.1f);
                     }
+
+                    CitizenGroup newCitizenGroup = Instantiate(citizenGroupPrefabs[rollGroup], spawnPoints[roll].transform);
+                    newCitizenGroup.SlaveManager = slaveManager;
+                    int citizenCount = newCitizenGroup.ClaculateCitizenCount(foodSlider.value);
+                    foodManager.AddFoodNeededForSpawning(citizenCount);
+                    newCitizenGroup.transform.localPosition = Vector3.zero;
+                    newCitizenGroup.spawnPoint = spawnPoints[roll];
+                    spawnPoints[roll].CitizenGroup = newCitizenGroup;
                 }
-                count++;
             }
-            yield return new WaitForSeconds(intervall);
+            count++;
         }
     }
 }
