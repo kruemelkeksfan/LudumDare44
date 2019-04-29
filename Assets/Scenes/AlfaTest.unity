@@ -25696,6 +25696,7 @@ MonoBehaviour:
   fightMusic: {fileID: 8300000, guid: f2999cfe33e34bf4d97cc352a0915a44, type: 3}
   normalMusic: {fileID: 8300000, guid: fbe880fe678065f489dae69c74125895, type: 3}
   hitSfx: {fileID: 1807903926}
+  fadeSpeed: 0.4
   enemies: []
   pause: 0
 --- !u!23 &1807903928
