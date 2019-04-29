@@ -10,6 +10,7 @@ public class SlaveShooter : MonoBehaviour
     [SerializeField] GameObject ShootingDisplay;
     [SerializeField] AudioClip[] screamSfx;
     [SerializeField] AudioClip splashSfx;
+    [SerializeField] AudioClip clickSfx;
     [SerializeField] SlaveManager slaveManager;
     [SerializeField] GameObject citizen;
     [SerializeField] float fireIntervall = 1;
@@ -21,6 +22,7 @@ public class SlaveShooter : MonoBehaviour
     Camera cam;
     float distance = 10.0f;
     float nextFireTime;
+    AudioSource audioSource;
 
     public AudioClip GetScreamSfx()
     {
@@ -65,6 +67,9 @@ public class SlaveShooter : MonoBehaviour
             if (Input.GetButtonDown("ToggleFiremode"))
             {
                 IsActive = false;
+                audioSource = GameObject.Find("SFX").GetComponent<AudioSource>();
+                audioSource.clip = clickSfx;
+                audioSource.Play();
             }
             if (Input.GetMouseButtonDown(1))
             {
@@ -106,6 +111,9 @@ public class SlaveShooter : MonoBehaviour
         else if (Input.GetButtonDown("ToggleFiremode"))
         {
             IsActive = true;
+            audioSource = GameObject.Find("SFX").GetComponent<AudioSource>();
+            audioSource.clip = clickSfx;
+            audioSource.Play();
         }
     }
     
