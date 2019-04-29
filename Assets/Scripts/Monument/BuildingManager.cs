@@ -18,6 +18,7 @@ public class BuildingManager : WorkingManager
     float step = 0;
     float nextStep = 0;
     int lastPart = 1;
+    bool waiting;
     Transform[] buildingChilds;
     List<Transform> buildingParts;
     GameManager gameManager;
@@ -103,10 +104,27 @@ public class BuildingManager : WorkingManager
                 nextStep += step;
                 lastPart++;
             }
-            if (lastPart >= buildingParts.Count)
+            if (lastPart >= buildingParts.Count && !waiting)
             {
-                gameManager.WinLevel();
+                if (combatManager.combat)
+                {
+                    waiting = true;
+                    StartCoroutine(CheckForCombat());
+                }
+                else
+                {
+                    gameManager.WinLevel();
+                }
             }
+        }
+    }
+    IEnumerator CheckForCombat()
+    {
+        yield return new WaitWhile(() => combatManager.combat);
+        waiting = false;
+        if (lastPart >= buildingParts.Count)
+        {
+            gameManager.WinLevel();
         }
     }
 }
