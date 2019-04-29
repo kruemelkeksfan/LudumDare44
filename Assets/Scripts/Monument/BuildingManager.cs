@@ -71,10 +71,6 @@ public class BuildingManager : WorkingManager
             int productiveWorker = Mathf.RoundToInt(materailCollector.Material / materialPerWorker);
 
             progressGain = progressPerWorker * productiveWorker;
-            if (extraFoodToggle.isOn)
-            {
-                progressGain = progressGain * extraProductionMulti;
-            }
             missingMaterialDisplay.gameObject.SetActive(true);
             missingMaterialDisplay.text = "Missing: " + (materailCollector.Material - worker * materialPerWorker * -1);
             materailCollector.RemoveMaterial(productiveWorker * materialPerWorker);

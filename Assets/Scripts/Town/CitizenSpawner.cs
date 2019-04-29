@@ -11,7 +11,7 @@ public class CitizenSpawner : MonoBehaviour
     [SerializeField] int trys = 4;
 
     [SerializeField] FoodManager foodManager;
-    [SerializeField] Slider foodSlider;
+    [SerializeField] Toggle food;
     [SerializeField] CitizenGroup[] citizenGroupPrefabs;
     [SerializeField] GameObject spawnPointHolder;
     [SerializeField] SlaveManager slaveManager;
@@ -25,8 +25,12 @@ public class CitizenSpawner : MonoBehaviour
 
     public void TrySpawn()
     {
+        if (!food.isOn)
+        {
+            return;
+        }
         int count = 0;
-        int currentTrys = Mathf.RoundToInt(trys * foodSlider.value);
+        int currentTrys = Mathf.RoundToInt(trys * 0.5f);
         if (currentTrys < 1)
         {
             currentTrys = 1;
@@ -48,7 +52,7 @@ public class CitizenSpawner : MonoBehaviour
 
                     CitizenGroup newCitizenGroup = Instantiate(citizenGroupPrefabs[rollGroup], spawnPoints[roll].transform);
                     newCitizenGroup.SlaveManager = slaveManager;
-                    int citizenCount = newCitizenGroup.ClaculateCitizenCount(foodSlider.value);
+                    int citizenCount = newCitizenGroup.ClaculateCitizenCount(0.5f);
                     foodManager.AddFoodNeededForSpawning(citizenCount);
                     newCitizenGroup.transform.localPosition = Vector3.zero;
                     newCitizenGroup.spawnPoint = spawnPoints[roll];
