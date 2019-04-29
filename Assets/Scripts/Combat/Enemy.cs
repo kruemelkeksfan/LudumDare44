@@ -18,6 +18,10 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
+        if (combatManager.pause)
+        {
+            return;
+        }
         transform.position += Vector3.forward * Time.deltaTime * speed;
         if (count < maxCount)
         {

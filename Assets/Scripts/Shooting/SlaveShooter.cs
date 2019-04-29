@@ -15,6 +15,8 @@ public class SlaveShooter : MonoBehaviour
     [SerializeField] int fireIntervall = 1;
     [SerializeField] Text freedSlavesDisplay;
     int count = 0;
+
+    public bool pause = false;
    
     Camera cam;
     float distance = 10.0f;
@@ -54,6 +56,10 @@ public class SlaveShooter : MonoBehaviour
 
     private void Update()
     {
+        if (pause)
+        {
+            return;
+        }
         if (IsActive)
         {
             if (Input.GetButtonDown("ToggleFiremode"))

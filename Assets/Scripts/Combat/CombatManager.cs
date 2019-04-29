@@ -23,6 +23,7 @@ public class CombatManager : MonoBehaviour
     List<Transform> enemySpawnPoints;
     bool combat;
     bool waiting;
+    public bool pause;
     AudioSource audioSource;
 
     void Start()
@@ -99,6 +100,10 @@ public class CombatManager : MonoBehaviour
     IEnumerator WaitForAttack()
     {
         yield return new WaitForSeconds(waitForAttackTime);
+        if (pause)
+        {
+            yield return new WaitWhile(() => pause);
+        }
         StartAttack();
     }
 }

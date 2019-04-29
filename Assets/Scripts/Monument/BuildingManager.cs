@@ -7,7 +7,6 @@ public class BuildingManager : WorkingManager
 {
     [SerializeField] Text missingMaterialDisplay;
     [SerializeField] Transform building;
-    [SerializeField] int intervall;
     [SerializeField] int gesProgress;
     [SerializeField] int progressPerWorker;
     [SerializeField] int materialPerWorker;
@@ -30,23 +29,21 @@ public class BuildingManager : WorkingManager
         gameManager = GameObject.FindObjectOfType<GameManager>();
         buildingParts = new List<Transform>();
         buildingChilds = building.GetComponentsInChildren<Transform>();
-        foreach(Transform buildingChild in buildingChilds)
+        foreach (Transform buildingChild in buildingChilds)
         {
             if (buildingChild.parent == building)
             {
                 buildingParts.Add(buildingChild);
             }
         }
-        foreach(Transform buildingPart in buildingParts)
+        foreach (Transform buildingPart in buildingParts)
         {
             buildingPart.gameObject.SetActive(false);
         }
         step = gesProgress / buildingParts.Count;
         nextStep = step;
         buildingParts[0].gameObject.SetActive(true);
-        StartCoroutine(Build());
         WorkerCountDisplay.text = preText + worker;
-
     }
 
     public void LossProgress(float value)
@@ -65,57 +62,51 @@ public class BuildingManager : WorkingManager
         }
     }
 
-    IEnumerator Build()
+    public void Build()
     {
-        yield return new WaitForSeconds(intervall);
-        while (true)
+        float progressGain;
+        if (materailCollector.Material < worker * materialPerWorker)
         {
-            float progressGain;
-            if (materailCollector.Material < worker * materialPerWorker)
-            {
-                int productiveWorker = Mathf.RoundToInt(materailCollector.Material / materialPerWorker);
+            int productiveWorker = Mathf.RoundToInt(materailCollector.Material / materialPerWorker);
 
-                progressGain = progressPerWorker * productiveWorker;
-                if (extraFoodToggle.isOn)
-                {
-                    progressGain = progressGain * extraProductionMulti;
-                }
-                missingMaterialDisplay.gameObject.SetActive(true);
-                missingMaterialDisplay.text = "Missing: " + (materailCollector.Material - worker * materialPerWorker * -1);
-                materailCollector.RemoveMaterial(productiveWorker * materialPerWorker);
-            }
-            else
+            progressGain = progressPerWorker * productiveWorker;
+            if (extraFoodToggle.isOn)
             {
-                missingMaterialDisplay.gameObject.SetActive(false);
-                progressGain = progressPerWorker * worker;
-                materailCollector.RemoveMaterial(worker * materialPerWorker);
+                progressGain = progressGain * extraProductionMulti;
             }
-            RemoveWorker(KillWorker());
-            if (progressGain < 0)
-            {
-                LossProgress(progressGain * -1f);
-            }
-            else
-            {
-                progress += progressGain;
-                if (progress > nextStep)
-                {
-                    audioSource = gameObject.GetComponent<AudioSource>();
-                    audioSource.clip = buildSfx[Random.Range(0, buildSfx.Length)];
-                    audioSource.Play();
-                    combatManager.RollForAttack();
-                    buildingParts[lastPart].gameObject.SetActive(true);
-                    lastStep = nextStep;
-                    nextStep += step;
-                    lastPart++;
-                }
-                if (lastPart >= buildingParts.Count)
-                {
-                    break;
-                }
-            }
-            yield return new WaitForSeconds(intervall);
+            missingMaterialDisplay.gameObject.SetActive(true);
+            missingMaterialDisplay.text = "Missing: " + (materailCollector.Material - worker * materialPerWorker * -1);
+            materailCollector.RemoveMaterial(productiveWorker * materialPerWorker);
         }
-        gameManager.WinLevel();
+        else
+        {
+            missingMaterialDisplay.gameObject.SetActive(false);
+            progressGain = progressPerWorker * worker;
+            materailCollector.RemoveMaterial(worker * materialPerWorker);
+        }
+        RemoveWorker(KillWorker());
+        if (progressGain < 0)
+        {
+            LossProgress(progressGain * -1f);
+        }
+        else
+        {
+            progress += progressGain;
+            if (progress > nextStep)
+            {
+                audioSource = gameObject.GetComponent<AudioSource>();
+                audioSource.clip = buildSfx[Random.Range(0, buildSfx.Length)];
+                audioSource.Play();
+                combatManager.RollForAttack();
+                buildingParts[lastPart].gameObject.SetActive(true);
+                lastStep = nextStep;
+                nextStep += step;
+                lastPart++;
+            }
+            if (lastPart >= buildingParts.Count)
+            {
+                gameManager.WinLevel();
+            }
+        }
     }
 }
