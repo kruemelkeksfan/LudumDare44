@@ -25991,7 +25991,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15488eadaae58ed43a5c9390ee132505, type: 2}
+  - {fileID: 2100000, guid: 63aec916b0b675f4dbffa1f58e5dcfd5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39390,12 +39390,12 @@ MonoBehaviour:
   highDeathCount: 100
   minOneDieChance: 2
   cutHighLossChance: 2
-  workerDieRate: 100
+  workerDieRate: 150
   noNegativeWorkers: 0
   missingMaterialDisplay: {fileID: 574617013}
   building: {fileID: 89217897}
   gesProgress: 20000
-  progressPerWorker: 5
+  progressPerWorker: 4
   materialPerWorker: 12
   materailCollector: {fileID: 1993710908}
   combatManager: {fileID: 810348657}
