@@ -15398,9 +15398,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LOOK_AT: {x: 0, y: 0, z: 0}
-  MOVEMENT_SPEED: 10
-  ROTATION_SPEED: 5
-  SCROLL_SPEED: 40
+  CAMERA_SPEED: 5
+  ROTATION_FACTOR: 1
+  SCROLL_FACTOR: 8
   MIN_HEIGHT: 40
   MAX_HEIGHT: 200
   MIN_SCROLL_DISTANCE: 200
@@ -15421,13 +15421,13 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: fbe880fe678065f489dae69c74125895, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -39419,7 +39419,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -56343,16 +56343,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 30.556936
       objectReference: {fileID: 0}
-    - target: {fileID: 7127794083881623365, guid: 92dd24e4622caf24eb85948ef23ea18f,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7368
-      objectReference: {fileID: 0}
     - target: {fileID: 7127794083879198117, guid: 92dd24e4622caf24eb85948ef23ea18f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 15488eadaae58ed43a5c9390ee132505, type: 2}
+    - target: {fileID: 7127794083881623365, guid: 92dd24e4622caf24eb85948ef23ea18f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7368
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92dd24e4622caf24eb85948ef23ea18f, type: 3}
 --- !u!4 &1541788547 stripped

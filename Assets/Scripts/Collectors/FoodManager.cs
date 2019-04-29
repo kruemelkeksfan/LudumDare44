@@ -7,13 +7,11 @@ public class FoodManager : MonoBehaviour
 {
     [SerializeField] Text productionCount;
     [SerializeField] Text foodNeededCount;
-    [SerializeField] Toggle extraFoodForWorker;
     [SerializeField] BuildingManager buildingManager;
     [SerializeField] CollectorManager resourcesManager;
     [SerializeField] CollectorManager farmManager;
     [SerializeField] SlaveManager slaveManager;
     [SerializeField] int foodNeededPerWorker;
-    [SerializeField] int extraFoodMultiplier = 2;
     [SerializeField] int foodNeededPerWorkingWorkerNormal = 2;
     [SerializeField] int foodNeedFor10CitizenSpawns;
     [SerializeField] int minDyingPerc = 50;
@@ -40,11 +38,8 @@ public class FoodManager : MonoBehaviour
     public void CalculateFood(int foodProduction)
     {
         int foodNeededPerWorkingWorker = foodNeededPerWorkingWorkerNormal;
-        if (extraFoodForWorker.isOn)
-        {
-            foodNeededPerWorkingWorker = foodNeededPerWorkingWorkerNormal * extraFoodMultiplier;
-        }
         foodNeeded = foodNeededForSpawning;
+        foodNeededForSpawning = 0;
         int nextNeededFood = farmManager.Worker * foodNeededPerWorkingWorker;
         if (nextNeededFood > farmManager.Material - foodNeeded)
         {

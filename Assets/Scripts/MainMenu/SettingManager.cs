@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class SettingManager : MonoBehaviour
 	{
@@ -17,7 +18,19 @@ public class SettingManager : MonoBehaviour
 	private float musicvolume = 1.0f;
 	private float sfxvolume = 1.0f;
 
-	private void Start()
+    public AudioMixer mixer;
+
+    public void SetMusicLevel(float sliderValue)
+    {
+        mixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 20);
+    }
+
+    public void SetSfxLevel(float sliderValue)
+    {
+        mixer.SetFloat("SfxVol", Mathf.Log10(sliderValue) * 20);
+    }
+
+    private void Start()
 		{
 		DontDestroyOnLoad(this);
 		}

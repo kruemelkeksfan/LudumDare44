@@ -59,10 +59,6 @@ public class CollectorManager : WorkingManager
     public void Collect()
     {
         int newMaterial = materialPerWorker * worker;
-        if (extraFoodToggle.isOn)
-        {
-            newMaterial = Mathf.RoundToInt(newMaterial * extraProductionMulti);
-        }
         AddMaterial(newMaterial);
         RemoveWorker(KillWorker());
         if (foodManager != null)
