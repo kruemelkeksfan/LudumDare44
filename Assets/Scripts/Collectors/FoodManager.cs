@@ -52,7 +52,6 @@ public class FoodManager : MonoBehaviour
             int dyingWorker = farmManager.Worker - Mathf.RoundToInt((farmManager.Material - foodNeeded) / foodNeededPerWorkingWorker);
             dyingWorker = Mathf.RoundToInt(dyingWorker * (roll / 100f));
             farmManager.RemoveWorker(dyingWorker);
-            Debug.Log("farmer: " + dyingWorker);
         }
         nextNeededFood = (resourcesManager.Worker + buildingManager.Worker) * foodNeededPerWorkingWorker;
         if (nextNeededFood > farmManager.Material - foodNeeded)
@@ -70,7 +69,6 @@ public class FoodManager : MonoBehaviour
                 resourcesManager.RemoveWorker(dyingWorker);
                 buildingManager.RemoveWorker(dyingWorker);
             }
-            Debug.Log("builder: " + dyingWorker);
         }
         foodNeeded += nextNeededFood;
         nextNeededFood = slaveManager.SlaveCount * foodNeededPerWorker;
@@ -80,7 +78,6 @@ public class FoodManager : MonoBehaviour
             int dyingWorker = slaveManager.SlaveCount - Mathf.RoundToInt((farmManager.Material - foodNeeded )/ foodNeededPerWorkingWorker);
             dyingWorker = Mathf.RoundToInt((dyingWorker * (roll / 100f)));
             slaveManager.RemoveSlaves(dyingWorker);
-            Debug.Log("slaves: " + dyingWorker);
         }
         foodNeeded += nextNeededFood;
         if (foodNeeded > farmManager.Material)

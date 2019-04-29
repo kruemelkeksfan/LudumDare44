@@ -22,15 +22,16 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-        transform.position += Vector3.forward * Time.deltaTime * speed;
+        transform.position += Vector3.forward * 2 * Time.deltaTime * speed;
         if (count < maxCount)
         {
             SideWalk();
         }
         else
         {
+            count = 0;
             int roll = Random.Range(0, 3);
-            maxCount = Random.Range(0, 15);
+            maxCount = Random.Range(15, 50);
             if (roll == 1 && transform.localPosition.x < maxSidetrack)
             {
                 direction = Vector3.right;
@@ -41,7 +42,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                direction = Vector3.forward;
+                direction = Vector3.forward * 2;
             }
         }
     }
@@ -51,6 +52,7 @@ public class Enemy : MonoBehaviour
         if (transform.localPosition.x > -maxSidetrack && transform.localPosition.x < maxSidetrack)
         {
             transform.position += direction * Time.deltaTime * speed;
+            count++;
         }
         else
         {

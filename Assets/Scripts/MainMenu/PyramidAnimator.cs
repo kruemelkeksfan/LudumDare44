@@ -10,6 +10,7 @@ public class PyramidAnimator : MonoBehaviour
 	private List<GameObject> pyramidstages = null;
 	private int currentstage = 1;
 	private float passedtime = 0.0f;
+    public AudioSource audioSource;
 
 	void Start()
 		{
@@ -34,7 +35,8 @@ public class PyramidAnimator : MonoBehaviour
 			{
 			pyramidstages[currentstage].SetActive(true);
 			++currentstage;
-			passedtime = 0.0f;
+            audioSource.Play();
+            passedtime = 0.0f;
 			}
 		}
 	}
