@@ -637,7 +637,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.39700007
+      value: -0.25390005
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -1943,7 +1943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1766451946}
   canvas: {fileID: 451042335}
-  audioSource: {fileID: 0}
+  levelTimer: {fileID: 0}
   winMusic: {fileID: 8300000, guid: ac60efdb860fa664f86cf8e9a3288eb8, type: 3}
 --- !u!4 &144616812
 Transform:
@@ -6242,7 +6242,7 @@ MonoBehaviour:
   splashSfx: {fileID: 8300000, guid: 6747beb5a15a6014a9af0f92715da46b, type: 3}
   slaveManager: {fileID: 1495286930}
   citizen: {fileID: 3002105849555160686, guid: 6ea75787c2a859f4b98a7ff32dcd69ef, type: 3}
-  fireIntervall: 0.3
+  fireIntervall: 0.6
   freedSlavesDisplay: {fileID: 1757152372}
   pause: 0
 --- !u!20 &472462950
@@ -6300,7 +6300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LOOK_AT: {x: 0, y: 0, z: 0}
-  MOVEMENT_SPEED: 13
+  MOVEMENT_SPEED: 10
   ROTATION_SPEED: 5
   SCROLL_SPEED: 40
   MIN_HEIGHT: 40
@@ -6513,7 +6513,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.435
+      value: -0.29189998
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -7059,7 +7059,7 @@ MonoBehaviour:
   extraFoodToggle: {fileID: 1410278643}
   WorkerCountDisplay: {fileID: 1429735352}
   preText: 'Farming: '
-  extraProductionMulti: 1.5
+  extraProductionMulti: 1.3
   startingWorkforce: 35
   highDeathCount: 100
   minOneDieChance: 1
@@ -7288,7 +7288,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.48590004
+      value: -0.34280002
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -8901,7 +8901,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.46310002
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -10145,7 +10145,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.435
+      value: -0.29189998
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -11313,11 +11313,11 @@ MonoBehaviour:
   spawnPointHolder: {fileID: 1072423436}
   enemyPrefab: {fileID: 6759564133916856914, guid: 9bb0424408d6c3e479b4731e9e0adc4f,
     type: 3}
-  attackChance: 50
-  minEnemyCount: 5
-  maxEnemyCount: 10
+  attackChance: 25
+  minEnemyCount: 6
+  maxEnemyCount: 12
   waitForAttackTime: 6
-  progressLoss: 50
+  progressLoss: 75
   spawnIntervall: 0.5
   fightMusic: {fileID: 8300000, guid: f2999cfe33e34bf4d97cc352a0915a44, type: 3}
   normalMusic: {fileID: 8300000, guid: fbe880fe678065f489dae69c74125895, type: 3}
@@ -14154,7 +14154,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.435
+      value: -0.29189998
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -14676,7 +14676,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.46310002
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -15737,7 +15737,7 @@ MonoBehaviour:
   extraFoodToggle: {fileID: 1410278643}
   WorkerCountDisplay: {fileID: 725405467}
   preText: 'Builing: '
-  extraProductionMulti: 1.8
+  extraProductionMulti: 1.5
   startingWorkforce: 5
   highDeathCount: 100
   minOneDieChance: 2
@@ -15746,7 +15746,7 @@ MonoBehaviour:
   noNegativeWorkers: 0
   missingMaterialDisplay: {fileID: 574617013}
   building: {fileID: 756596412}
-  gesProgress: 10000
+  gesProgress: 15000
   progressPerWorker: 7
   materialPerWorker: 11
   materailCollector: {fileID: 1993710908}
@@ -16036,7 +16036,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.48590004
+      value: -0.34280002
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -17351,7 +17351,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.397
+      value: -0.2539
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -22088,7 +22088,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.4859
+      value: -0.34280002
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -25299,7 +25299,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.435
+      value: -0.29189998
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -26168,7 +26168,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.39700007
+      value: -0.25390005
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -28355,7 +28355,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.4631
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
@@ -29866,7 +29866,7 @@ MonoBehaviour:
   extraFoodToggle: {fileID: 1410278643}
   WorkerCountDisplay: {fileID: 1313001045}
   preText: 'Query worker: '
-  extraProductionMulti: 1.8
+  extraProductionMulti: 1.6
   startingWorkforce: 10
   highDeathCount: 100
   minOneDieChance: 3
@@ -30997,7 +30997,7 @@ PrefabInstance:
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.39700007
+      value: -0.25390005
       objectReference: {fileID: 0}
     - target: {fileID: 8922857853823562744, guid: 119edd195ff5fff48b5c5a708b372803,
         type: 3}

@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] Text text;
     [SerializeField] GameObject canvas;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] LevelTimer levelTimer;
+    AudioSource audioSource;
     [SerializeField] AudioClip winMusic;
 
     void Start()
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     {
         audioSource.Stop();
         audioSource.PlayOneShot(winMusic);
+        levelTimer.Pause = true;
         canvas.SetActive(true);
         text.text = "Congratulations, you build the Monument";
     }
