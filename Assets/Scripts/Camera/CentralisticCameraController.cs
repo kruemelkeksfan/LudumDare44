@@ -20,12 +20,15 @@ public class CentralisticCameraController : MonoBehaviour
 
 	private void Start()
 		{
-		settings = GameObject.Find("SettingManager").GetComponent<SettingManager>();
+		settings = GameObject.Find("SettingManager")?.GetComponent<SettingManager>();
 		}
 
 	private void Update()
 		{
-		CAMERA_SPEED = settings.getCameraSpeed();
+		if(settings != null)
+			{
+			CAMERA_SPEED = settings.getCameraSpeed();
+			}
 
 		Vector3 direction = new Vector3();
 		Vector3 rotation = transform.rotation.eulerAngles;
