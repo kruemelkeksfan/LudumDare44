@@ -18926,7 +18926,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 1500
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -25380,11 +25380,6 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5412557753331812308, guid: 854b3fecea68b29498f49be890314eba,
-        type: 3}
-      propertyPath: m_Text
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 6167043407719676649, guid: 854b3fecea68b29498f49be890314eba,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -25414,6 +25409,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412557753331812308, guid: 854b3fecea68b29498f49be890314eba,
+        type: 3}
+      propertyPath: m_Text
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854b3fecea68b29498f49be890314eba, type: 3}
@@ -54343,11 +54343,6 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5412557753331812308, guid: 854b3fecea68b29498f49be890314eba,
-        type: 3}
-      propertyPath: m_Text
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6167043407719676649, guid: 854b3fecea68b29498f49be890314eba,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -54377,6 +54372,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412557753331812308, guid: 854b3fecea68b29498f49be890314eba,
+        type: 3}
+      propertyPath: m_Text
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854b3fecea68b29498f49be890314eba, type: 3}
@@ -55397,11 +55397,6 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5412557753331812308, guid: 854b3fecea68b29498f49be890314eba,
-        type: 3}
-      propertyPath: m_Text
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 6167043407719676649, guid: 854b3fecea68b29498f49be890314eba,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -55431,6 +55426,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412557753331812308, guid: 854b3fecea68b29498f49be890314eba,
+        type: 3}
+      propertyPath: m_Text
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854b3fecea68b29498f49be890314eba, type: 3}

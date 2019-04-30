@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Egypt.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
-  - enabled: 0
-    path: Assets/Scenes/KruemelTest.unity
-    guid: 7ac085b103813b04794dae245eceffda
-  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 482040373808a234baf851681d84b925
   - enabled: 1
+    path: Assets/Scenes/Egypt.unity
+    guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 1
     path: Assets/Scenes/Greece.unity
     guid: 24dcbfcef0dda4b488ab6354b8729801
+  - enabled: 0
+    path: Assets/Scenes/KruemelTest.unity
+    guid: 7ac085b103813b04794dae245eceffda
   m_configObjects: {}
