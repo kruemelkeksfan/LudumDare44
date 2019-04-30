@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(this);
         audioSource = GameObject.Find("MainCamera").GetComponent<AudioSource>();
         levelTimer = FindObjectOfType<LevelTimer>();
     }
