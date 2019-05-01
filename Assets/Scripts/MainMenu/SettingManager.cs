@@ -7,6 +7,8 @@ using UnityEngine.Audio;
 
 public class SettingManager : MonoBehaviour
 	{
+	public Texture2D cursor = null;
+
 	public List<GameObject> levels = null;
 	public List<GameObject> options = null;
 
@@ -33,6 +35,8 @@ public class SettingManager : MonoBehaviour
     private void Start()
 		{
 		DontDestroyOnLoad(this);
+
+		Cursor.SetCursor(cursor, new Vector2(8, 8), CursorMode.Auto);
 		}
 
 	public void toggleLevels(bool onoff)
