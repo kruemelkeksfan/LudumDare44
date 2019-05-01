@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     LevelTimer levelTimer;
     AudioSource audioSource;
     [SerializeField] AudioClip winMusic;
+    [SerializeField] AudioSource winSource;
 
     void Start()
     {
@@ -20,8 +21,8 @@ public class GameManager : MonoBehaviour
 
     public void WinLevel()
     {
-        audioSource.Stop();
-        audioSource.PlayOneShot(winMusic);
+        audioSource.volume = 0;
+        winSource.PlayOneShot(winMusic);
         levelTimer.Pause = true;
         canvas.SetActive(true);
         text.text = "Congratulations, you build the Monument";
